@@ -1,7 +1,13 @@
 {
   "title": "RavenDB.AspNetCore.Identity",
   "version": "1.0.1",
+  "authors": [ "Alexandru Puiu" ],
+  "description": "AspNetCore RavenDB Identity Provider",
 
+  "packOptions": {
+    "repository": { "url": "https://github.com/terrasynq/RavenDB.AspNetCore.Identity" },
+    "licenseUrl": "https://github.com/terrasynq/RavenDB.AspNetCore.Identity/blob/master/LICENSE"
+  },
   "frameworks": {
     "netstandard1.6": {
       "imports": [
