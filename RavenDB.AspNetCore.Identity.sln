@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RavenDB.AspNetCore.Identity", "RavenDB.AspNetCore.Identity.xproj", "{46B3E827-0CD9-4F77-9B37-F2540D74508E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46B3E827-0CD9-4F77-9B37-F2540D74508E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46B3E827-0CD9-4F77-9B37-F2540D74508E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46B3E827-0CD9-4F77-9B37-F2540D74508E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46B3E827-0CD9-4F77-9B37-F2540D74508E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(CodealikeProperties) = postSolution
+		SolutionGuid = 15a1e648-1305-4dd8-b8fc-d87738ff1401
+	EndGlobalSection
+EndGlobal

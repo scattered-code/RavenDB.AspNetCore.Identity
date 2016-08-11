@@ -1,0 +1,20 @@
+{
+  "title": "RavenDB.AspNetCore.Identity",
+  "version": "1.0.1",
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": [
+      ],
+      "dependencies": {
+      }
+    }
+  },
+  "dependencies": {
+    "Microsoft.AspNetCore.Identity": "1.0.0",
+    "Microsoft.Extensions.Configuration": "1.0.0",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0",
+    "RavenDB.Client": "3.5.0-rc-35166",
+    "RavenDB.Client.UniqueConstraints": "3.5.0-rc-35166"
+  }
+}
