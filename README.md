@@ -11,11 +11,18 @@ Install the [RavenDB.AspNetCore.Identity](https://www.nuget.org/packages/RavenDB
 Usage:
 
 ```csharp
-services.AddIdentity<ApplicationUser, RavenRole>();
-services.AddScoped<IUserStore<ApplicationUser>, RavenUserStore<ApplicationUser, RavenRole>>();
-services.AddScoped<IRoleStore<RavenRole>, RavenUserStore<ApplicationUser, RavenRole>>();
+public IServiceProvider ConfigureServices(IServiceCollection services)
+{
+	...
+	
+	services.AddIdentity<ApplicationUser, RavenRole>();
+	services.AddScoped<IUserStore<ApplicationUser>, RavenUserStore<ApplicationUser, RavenRole>>();
+	services.AddScoped<IRoleStore<RavenRole>, RavenUserStore<ApplicationUser, RavenRole>>();
             
-services.AddIdentity<ApplicationUser, RavenRole>().AddDefaultTokenProviders();
+	services.AddIdentity<ApplicationUser, RavenRole>().AddDefaultTokenProviders();
+	
+	...
+}
 ```
 
 ```csharp
