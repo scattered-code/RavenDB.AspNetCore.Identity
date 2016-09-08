@@ -18,11 +18,6 @@ namespace RavenDB.AspNetCore.Identity.Entities
         public int Id { get; set; }
 
         /// <summary>
-        ///     User Id for the user who owns this claim
-        /// </summary>
-        public TKey UserId { get; set; }
-
-        /// <summary>
         ///     Claim type
         /// </summary>
         public string ClaimType { get; set; }

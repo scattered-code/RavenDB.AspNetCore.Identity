@@ -63,7 +63,7 @@ namespace RavenDB.AspNetCore.Identity.Stores
         {
             foreach (var claim in claims)
             {
-                user.Claims.Add(new RavenUserClaim<string> { ClaimType = claim.Type, ClaimValue = claim.Value, UserId = user.Id });
+                user.Claims.Add(new RavenUserClaim<string> { ClaimType = claim.Type, ClaimValue = claim.Value });
             }
             return Task.FromResult(0);
         }
@@ -83,9 +83,7 @@ namespace RavenDB.AspNetCore.Identity.Stores
         {
             foreach (var claim in claims)
             {
-                var entity =
-                    user.Claims.FirstOrDefault(
-                        uc => uc.UserId == user.Id && uc.ClaimType == claim.Type && uc.ClaimValue == claim.Value);
+                var entity = user.Claims.FirstOrDefault(uc => uc.ClaimType == claim.Type && uc.ClaimValue == claim.Value);
                 if (entity != null)
                 {
                     user.Claims.Remove(entity);
@@ -248,7 +246,9 @@ namespace RavenDB.AspNetCore.Identity.Stores
 
         public async Task<IdentityResult> UpdateAsync(TUser user, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await _session.StoreAsync(user, cancellationToken);
+            var dbUser = await _session.LoadAsync<TUser>(user.Id, cancellationToken);
+            _session.Delete(dbUser);
+            await _session.StoreAsync(dbUser, cancellationToken);
             await _session.SaveChangesAsync(cancellationToken);
             return IdentityResult.Success;
         }
@@ -324,7 +324,7 @@ namespace RavenDB.AspNetCore.Identity.Stores
 
             if (dbRole != null)
             {
-                user.Roles.Add(new RavenUserRole<string> { RoleId = dbRole.Id, UserId = user.Id });
+                user.Roles.Add(dbRole.Id);
             }
         }
 
@@ -333,26 +333,18 @@ namespace RavenDB.AspNetCore.Identity.Stores
         {
             var dbRole = await _session.LoadAsync<TRole>($"Roles/{role}");
 
-            var roleEntity = user.Roles.SingleOrDefault(ur => ur.RoleId == dbRole.Id);
-            if (roleEntity != null)
-            {
-                user.Roles.Remove(roleEntity);
-            }
+            user.Roles.Remove(dbRole.Id);
         }
 
-        public Task<IList<string>> GetRolesAsync(TUser user, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IList<string>> GetRolesAsync(TUser user, CancellationToken cancellationToken = default(CancellationToken))
         {
-            IList<string> roles = new List<string>();
-            foreach (var r in user.Roles.Select(ur => ur.RoleId))
-            {
-                roles.Add(r.Replace("Roles/", ""));
-            }
-            return Task.FromResult(roles);
+            await Task.FromResult(0);
+            return user.Roles.Select(t => t.Substring(7)).ToList();
         }
 
         public Task<bool> IsInRoleAsync(TUser user, string role, CancellationToken cancellationToken = default(CancellationToken))
         {
-            bool result = user.Roles.Any(ur => ur.RoleId.Equals($"Roles/{role}", StringComparison.CurrentCultureIgnoreCase));
+            bool result = user.Roles.Contains($"Roles/{role}");
             return Task.FromResult(result);
         }
 
@@ -397,7 +389,7 @@ namespace RavenDB.AspNetCore.Identity.Stores
                 throw new ArgumentNullException(nameof(roleName));
             }
 
-            return await Users.Where(t => t.Roles.Any(s => s.RoleId.Equals($"Roles/{roleName}"))).ToListAsync();
+            return await Users.Where(t => t.Roles.Contains($"Roles/{roleName}")).ToListAsync();
         }
 
         public async Task<IList<TUser>> GetUsersForClaimAsync(Claim claim, CancellationToken cancellationToken = default(CancellationToken))

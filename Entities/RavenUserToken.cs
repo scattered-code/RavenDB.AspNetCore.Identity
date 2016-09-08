@@ -26,10 +26,5 @@ namespace RavenDB.AspNetCore.Identity.Entities
         ///     Display name for the login
         /// </summary>
         public string TokenValue { get; set; }
-
-        /// <summary>
-        ///     User Id for the user who owns this login
-        /// </summary>
-        public TKey UserId { get; set; }
     }
 }

@@ -37,7 +37,7 @@ namespace RavenDB.AspNetCore.Identity.Entities
     /// Represents a role in the identity system
     /// </summary>
     /// <typeparam name="TKey">The type used for the primary key for the role.</typeparam>
-    public class RavenRole<TKey> : RavenRole<TKey, RavenUserRole<TKey>, RavenRoleClaim<TKey>>
+    public class RavenRole<TKey> : RavenRole<TKey, RavenRoleClaim<TKey>>
         where TKey : IEquatable<TKey>
     {
     }
@@ -48,9 +48,8 @@ namespace RavenDB.AspNetCore.Identity.Entities
     /// <typeparam name="TKey">The type used for the primary key for the role.</typeparam>
     /// <typeparam name="TUserRole">The type used for user roles.</typeparam>
     /// <typeparam name="TRoleClaim">The type used for role claims.</typeparam>
-    public class RavenRole<TKey, TUserRole, TRoleClaim>
+    public class RavenRole<TKey, TRoleClaim>
         where TKey : IEquatable<TKey>
-        where TUserRole : RavenUserRole<TKey>
         where TRoleClaim : RavenRoleClaim<TKey>
     {
         /// <summary>
@@ -66,11 +65,6 @@ namespace RavenDB.AspNetCore.Identity.Entities
         {
             Name = roleName;
         }
-
-        /// <summary>
-        /// Navigation property for the users in this role.
-        /// </summary>
-        public IList<TUserRole> Users { get; } = new List<TUserRole>();
 
         /// <summary>
         /// Navigation property for claims in this role.

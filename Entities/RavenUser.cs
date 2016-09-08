@@ -97,7 +97,7 @@ namespace RavenDB.AspNetCore.Identity.Entities
         /// </summary>
         public int AccessFailedCount { get; set; }
 
-        public IList<RavenUserRole<TKey>> Roles { get; private set; } = new List<RavenUserRole<TKey>>();
+        public IList<string> Roles { get; private set; } = new List<string>();
         public IList<RavenUserClaim<TKey>> Claims { get; private set; } = new List<RavenUserClaim<TKey>>();
         public IList<RavenUserLogin<TKey>> Logins { get; private set; } = new List<RavenUserLogin<TKey>>();
         public IList<RavenUserToken<TKey>> Tokens { get; private set; } = new List<RavenUserToken<TKey>>();
