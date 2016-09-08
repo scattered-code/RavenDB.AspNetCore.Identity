@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Raven.Client.Linq;
 using Raven.Client.UniqueConstraints;
+using Omu.ValueInjecter;
 
 namespace RavenDB.AspNetCore.Identity.Stores
 {
@@ -246,9 +247,10 @@ namespace RavenDB.AspNetCore.Identity.Stores
 
         public async Task<IdentityResult> UpdateAsync(TUser user, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var dbUser = await _session.LoadAsync<TUser>(user.Id, cancellationToken);
-            _session.Delete(dbUser);
-            await _session.StoreAsync(dbUser, cancellationToken);
+            var dbUser = await _session.LoadAsync<TUser>(user.Id);
+
+            dbUser.InjectFrom(user);
+
             await _session.SaveChangesAsync(cancellationToken);
             return IdentityResult.Success;
         }
@@ -339,7 +341,7 @@ namespace RavenDB.AspNetCore.Identity.Stores
         public async Task<IList<string>> GetRolesAsync(TUser user, CancellationToken cancellationToken = default(CancellationToken))
         {
             await Task.FromResult(0);
-            return user.Roles.Select(t => t.Substring(7)).ToList();
+            return user.Roles.Select(t => t.Substring(6)).ToList();
         }
 
         public Task<bool> IsInRoleAsync(TUser user, string role, CancellationToken cancellationToken = default(CancellationToken))

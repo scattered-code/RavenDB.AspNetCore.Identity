@@ -41,6 +41,15 @@ public IServiceProvider ConfigureServices(IServiceCollection services)
 		//extend as needed with your own properties
 	}
 ```
+	
+## Version 1.0.5
+* Fixed issue with roles being incorrectly returned
+	
+## Version 1.0.4
+* Added value injector to update user object
+	
+## Version 1.0.3
+* Fixed bug in updating user
 
 ## Version 1.0.2
 * Restructured storage of Roles in user object, please note this is a breaking change if you're using version 1.0.1, you'll need to patch the existing users in your database:
