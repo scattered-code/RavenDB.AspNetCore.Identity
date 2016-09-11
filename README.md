@@ -1,5 +1,5 @@
 # AspNet.Core RavenDB Identity Provider
-================
+
 Fully asynchronous, ASP.NET Core Identity provider for RavenDB 3.5.
 
 ## Getting Started
