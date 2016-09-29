@@ -15,14 +15,15 @@
       ],
       "dependencies": {
       }
-    }
+    },
+    "net451": {}
   },
   "dependencies": {
     "Microsoft.AspNetCore.Identity": "1.0.0",
     "Microsoft.Extensions.Configuration": "1.0.0",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
-    "RavenDB.Client": "3.5.0-rc-35166",
-    "RavenDB.Client.UniqueConstraints": "3.5.0-rc-35166",
+    "RavenDB.Client": "3.5.0-rc-35169",
+    "RavenDB.Client.UniqueConstraints": "3.5.0-rc-35169",
     "valueinjecter": "3.1.1.3"
   }
 }

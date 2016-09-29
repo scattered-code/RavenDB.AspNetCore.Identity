@@ -42,6 +42,10 @@ public IServiceProvider ConfigureServices(IServiceCollection services)
 	}
 ```
 	
+## Version 1.0.6
+* Updated RavenDB nuget packages to 3.5.0-rc-35169
+* Added target for .NETFramework 4.5.1
+	
 ## Version 1.0.5
 * Fixed issue with roles being incorrectly returned
 	
