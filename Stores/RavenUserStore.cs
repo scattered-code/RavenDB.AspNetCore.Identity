@@ -129,7 +129,14 @@ namespace RavenDB.AspNetCore.Identity.Stores
 
         public async Task<TUser> FindByEmailAsync(string email, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await _session.LoadByUniqueConstraintAsync<TUser>(t => t.NormalizedEmail, email);
+            try
+            {
+                return await _session.LoadByUniqueConstraintAsync<TUser>(t => t.NormalizedEmail, email);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public Task<DateTimeOffset?> GetLockoutEndDateAsync(TUser user, CancellationToken cancellationToken = default(CancellationToken))
@@ -266,7 +273,14 @@ namespace RavenDB.AspNetCore.Identity.Stores
 
         public async Task<TUser> FindByNameAsync(string userName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await _session.LoadByUniqueConstraintAsync<TUser>(t => t.NormalizedUserName, userName);
+            try
+            {
+                return await _session.LoadByUniqueConstraintAsync<TUser>(t => t.NormalizedUserName, userName);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public async Task<IdentityResult> DeleteAsync(TUser user, CancellationToken cancellationToken = default(CancellationToken))

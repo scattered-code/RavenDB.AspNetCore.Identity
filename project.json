@@ -1,6 +1,6 @@
 {
   "title": "RavenDB.AspNetCore.Identity",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "authors": [ "Alexandru Puiu" ],
   "description": "AspNetCore RavenDB Identity Provider",
   "projectUrl": "https://github.com/terrasynq/RavenDB.AspNetCore.Identity",
@@ -19,11 +19,11 @@
     "net451": {}
   },
   "dependencies": {
-    "Microsoft.AspNetCore.Identity": "1.0.0",
-    "Microsoft.Extensions.Configuration": "1.0.0",
-    "Microsoft.Extensions.Configuration.Json": "1.0.0",
-    "RavenDB.Client": "3.5.0-rc-35169",
-    "RavenDB.Client.UniqueConstraints": "3.5.0-rc-35169",
+    "Microsoft.AspNetCore.Identity": "1.1.0",
+    "Microsoft.Extensions.Configuration": "1.1.0",
+    "Microsoft.Extensions.Configuration.Json": "1.1.0",
+    "RavenDB.Client": "3.5.2-patch-35181",
+    "RavenDB.Client.UniqueConstraints": "3.5.2-patch-35181",
     "valueinjecter": "3.1.1.3"
   }
 }
