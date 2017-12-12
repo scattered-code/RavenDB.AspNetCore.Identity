@@ -42,6 +42,10 @@ public IServiceProvider ConfigureServices(IServiceCollection services)
 	}
 ```
 	
+## Version 2.0.0
+* Updated RavenDB nuget packages to 3.5.5-patch-35243
+* Upgraded to .net standard 2.0
+	
 ## Version 1.0.6
 * Updated RavenDB nuget packages to 3.5.0-rc-35169
 * Added target for .NETFramework 4.5.1
