@@ -1,4 +1,6 @@
 # AspNet.Core RavenDB Identity Provider
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fops-ai%2FRavenDB.AspNetCore.Identity.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fops-ai%2FRavenDB.AspNetCore.Identity?ref=badge_shield)
+
 
 Fully asynchronous, ASP.NET Core Identity provider for RavenDB 3.5.
 
@@ -70,3 +72,7 @@ public IServiceProvider ConfigureServices(IServiceCollection services)
 
 
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fops-ai%2FRavenDB.AspNetCore.Identity.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fops-ai%2FRavenDB.AspNetCore.Identity?ref=badge_large)
